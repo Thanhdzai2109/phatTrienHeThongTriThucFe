@@ -4,6 +4,7 @@ import { FethApiService } from 'src/app/common/api/feth-api.service';
 import { AuthService } from 'src/app/common/auth/auth.service';
 import { OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private api: FethApiService,
     private auth: AuthService,
+    private router: Router,
     private toastr: ToastrService,
     private fb: FormBuilder
   ) {}
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.buidForm();
   }
   doLogin() {
-    debugger;
+    this.router.navigate(['dashboard']);
     let data = {
       userName: this.loginForm.controls['userName'],
       passWord: this.loginForm.controls['passWord'],
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.api.post('', data).subscribe((res) => {
       if (res && res.success === true) {
         this.auth.authenticate(res['data']['result']['AuthenticationResult']);
+        
       } else {
         this.toastr.error('Thông báo', 'Thông tin đăng nhập không hợp lệ');
       }

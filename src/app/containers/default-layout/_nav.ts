@@ -10,4 +10,13 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+  {
+    name: 'Cetificate',
+    url: '/cetificate',
+    iconComponent: { name: 'cilSpreadsheet' },
+    badge: {
+      color: 'info',
+      text: 'NEW'
+    }
+  },
 ];
