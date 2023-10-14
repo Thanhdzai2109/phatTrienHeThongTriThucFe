@@ -24,24 +24,34 @@ export class LoginComponent implements OnInit {
     this.buidForm();
   }
   doLogin() {
-    this.router.navigate(['dashboard']);
+    debugger
     let data = {
-      userName: this.loginForm.controls['userName'],
-      passWord: this.loginForm.controls['passWord'],
+      user_email: this.loginForm.controls['userName'].value,
+      user_password: this.loginForm.controls['passWord'].value,
     };
-    this.api.post('', data).subscribe((res) => {
-      if (res && res.success === true) {
-        this.auth.authenticate(res['data']['result']['AuthenticationResult']);
+
+    
+    this.api.post('http://localhost:8080/app_user/login', data).subscribe((res:any) => {
+    
+      
+      if (res) {
+     
+        console.log(res['access_token']);
+        localStorage.setItem('token', res['access_token']);
+        const token = localStorage.getItem('token');
+        console.log(token);
+        this.router.navigate(['dashboard']);
         
       } else {
-        this.toastr.error('Thông báo', 'Thông tin đăng nhập không hợp lệ');
+        this.toastr.error('Thông tin đăng nhập không hợp lệ');
       }
     });
   }
+  
   buidForm() {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      passWord: ['', [Validators.required]],
     });
   }
 }

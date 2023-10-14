@@ -7,16 +7,12 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' },
     badge: {
       color: 'info',
-      text: 'NEW'
-    }
+      text: 'NEW',
+    },
   },
   {
     name: 'Cetificate',
     url: '/cetificate/cetificateTT',
     iconComponent: { name: 'cilSpreadsheet' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
   },
 ];
