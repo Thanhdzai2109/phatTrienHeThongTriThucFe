@@ -9,6 +9,7 @@ import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardModule,
     ButtonModule,
     GridModule,
+    ToastrModule.forRoot(),
     IconModule,
     ReactiveFormsModule,
     FormModule

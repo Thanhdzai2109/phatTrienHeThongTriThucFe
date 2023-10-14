@@ -7,7 +7,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { HttpClientModule } from '@angular/common/http';
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-
+import { ToastrModule } from 'ngx-toastr';
 // Import app component
 import { AppComponent } from './app.component';
 
@@ -67,6 +67,7 @@ const APP_CONTAINERS = [
     SidebarModule,
     SharedModule,
     TabsModule,
+    ToastrModule.forRoot(),
     ListGroupModule,
     ProgressModule,
     BadgeModule,
