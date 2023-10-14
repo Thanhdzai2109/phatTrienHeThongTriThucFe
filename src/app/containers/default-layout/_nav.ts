@@ -12,7 +12,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Cetificate',
-    url: '/cetificate',
+    url: '/cetificate/cetificateTT',
     iconComponent: { name: 'cilSpreadsheet' },
     badge: {
       color: 'info',

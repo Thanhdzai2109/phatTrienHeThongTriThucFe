@@ -44,7 +44,7 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { CertificateRoutingModule } from './views/certificate/certificate-routing.module';
+import { CertificateModule } from './views/certificate/certificate.module';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -87,7 +87,7 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     NgScrollbarModule,
-    CertificateRoutingModule,
+    CertificateModule,
   ],
   providers: [
     {
