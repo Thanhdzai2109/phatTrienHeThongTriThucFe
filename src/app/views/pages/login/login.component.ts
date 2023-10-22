@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         const token = localStorage.getItem('token');
         console.log(token);
         this.toastr.success('Đăng nhập thành công !');
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['health-care']);
       } else {
         this.toastr.error('Thông tin đăng nhập không hợp lệ');
       }

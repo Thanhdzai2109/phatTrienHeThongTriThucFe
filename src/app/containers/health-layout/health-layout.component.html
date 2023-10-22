@@ -5,11 +5,9 @@
   <!--app-header-->
   <app-health-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar" />
   <!--app-body-->
-  <div class="body flex-grow-1 px-3">
-    <c-container breakpoint="lg" class="h-auto">
+  <div class="body flex-grow-1 px-3 d-flex flex-row">
+    <c-container breakpoint="lg" class="flex-1 container">
       <router-outlet />
     </c-container>
   </div>
-  <!--app footer-->
-  <app-default-footer />
 </div>
