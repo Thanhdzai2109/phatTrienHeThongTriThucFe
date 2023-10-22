@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayoutComponent } from './containers';
+import { HealthLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
@@ -15,11 +16,34 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: HealthLayoutComponent,
+    data: {
+      title: 'Health-Home',
+    },
+    children: [
+      {
+        path: 'health-care',
+        loadChildren: () =>
+          import('./views/health-care/health-care.module').then(
+            (m) => m.HealthCareModule
+          ),
+      },
+    ],
+  },
+  {
+    path: 'demo',
     component: DefaultLayoutComponent,
     data: {
       title: 'Home',
     },
     children: [
+      {
+        path: 'health-care',
+        loadChildren: () =>
+          import('./views/health-care/health-care.module').then(
+            (m) => m.HealthCareModule
+          ),
+      },
       {
         path: 'dashboard',
         loadChildren: () =>

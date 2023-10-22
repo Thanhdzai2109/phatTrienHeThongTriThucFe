@@ -45,6 +45,8 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { CertificateModule } from './views/certificate/certificate.module';
+import { HealthCareComponent } from './views/health-care/health-care.component';
+import { HealthLayoutComponent } from './containers/health-layout/health-layout.component';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -53,7 +55,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, HealthCareComponent, HealthLayoutComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
