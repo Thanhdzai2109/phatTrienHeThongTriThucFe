@@ -7,17 +7,20 @@ import { IconModule } from '@coreui/icons-angular';
 import { DocsExampleComponent } from './docs-example/docs-example.component';
 import { DocsLinkComponent } from './docs-link/docs-link.component';
 import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 @NgModule({
   declarations: [
     DocsExampleComponent,
     DocsLinkComponent,
-    DocsCalloutComponent
+    DocsCalloutComponent,
+    ChatBotComponent
   ],
   exports: [
     DocsExampleComponent,
     DocsLinkComponent,
-    DocsCalloutComponent
+    DocsCalloutComponent,
+    ChatBotComponent
   ],
   imports: [
     CommonModule,
