@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DocsComponentsModule } from './../../../components'
 
 import { HealthCareComponent } from './health-care.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,8 @@ import { ChatModule } from '@progress/kendo-angular-conversational-ui';
     CommonModule,
     ChatModule,
     BrowserAnimationsModule,
-    BrowserModule
+    BrowserModule,
+    DocsComponentsModule
   ]
 })
 export class HealthCareModule { }
