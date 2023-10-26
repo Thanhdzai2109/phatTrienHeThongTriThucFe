@@ -12,5 +12,15 @@
     &:hover {
         transform: scale(1.1);
     }
+    
+}
+.l-row {
+    border-bottom: 1px solid #f0f0f0;
 }
 
+.l-input {
+    outline: none;
+    text-align: right;
+    flex: 1;
+    height: 48px;
+}

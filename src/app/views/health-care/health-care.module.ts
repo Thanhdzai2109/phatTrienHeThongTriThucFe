@@ -7,6 +7,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
 
+import {
+  AvatarModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  FormModule,
+  GridModule,
+  NavModule,
+  ProgressModule,
+  TableModule,
+  TabsModule,
+  ModalModule
+} from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
+import { ChartjsModule } from '@coreui/angular-chartjs';
+
 
 @NgModule({
   declarations: [HealthCareComponent],
@@ -15,7 +31,16 @@ import { ChatModule } from '@progress/kendo-angular-conversational-ui';
     ChatModule,
     BrowserAnimationsModule,
     BrowserModule,
-    DocsComponentsModule
+    DocsComponentsModule,
+    AvatarModule,
+    ButtonModule,
+    CardModule,
+    FormModule,
+    GridModule,
+    NavModule,
+    TableModule,
+    TabsModule,
+    ModalModule
   ]
 })
 export class HealthCareModule { }
