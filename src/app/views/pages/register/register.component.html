@@ -1,12 +1,12 @@
 <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
-      <c-col lg="7" md="9" xl="6">
+      <c-col lg="7" md="9" xl="6" class="form-login">
         <c-card class="mx-4">
           <c-card-body class="p-4">
             <form cForm [formGroup]="formDangki">
-              <h1>Register</h1>
-              <p class="text-medium-emphasis">Create your account</p>
+              <h1>Đăng ký</h1>
+              <p class="text-medium-emphasis">Tạo tài khoản</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
@@ -24,7 +24,7 @@
                 <input formControlName="password"cFormControl placeholder="Password" type="password"/>
               </c-input-group>
               <div class="d-grid">
-                <button cButton color="success" (click)="regiter()">Create Account</button>
+                <button cButton color="success" (click)="regiter()">Đăng ký</button>
               </div>
             </form>
           </c-card-body>

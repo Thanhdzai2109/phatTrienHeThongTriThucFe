@@ -1,13 +1,13 @@
 <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
-    <c-row class="justify-content-center">
-      <c-col md="8">
+    <c-row class="justify-content-center w-60">
+      <c-col md="8" class="form-login">
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
               <form cForm
                [formGroup]="loginForm">
-                <h1>Login</h1>
+                <h1>Đăng nhập</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>@</span>
@@ -25,14 +25,14 @@
                   />
                 </c-input-group>
                 <c-row>
-                  <c-col xs="6">
-                    <button cButton class="px-4" color="primary" (click)="doLogin()">
-                      Login
+                  <c-col xs="12">
+                    <button cButton class="px-4 w-100" color="primary" (click)="doLogin()">
+                      Đăng nhập
                     </button>
                   </c-col>
-                  <c-col xs="6">
-                    <button cButton class="px-4" color="primary" (click)="doRegiter()">
-                      Regiter
+                  <c-col xs="12" class="mt-4">
+                    <button cButton class="px-4 w-100" color="primary" (click)="doRegiter()">
+                      Đăng ký
                     </button>
                   </c-col>
                 </c-row>
