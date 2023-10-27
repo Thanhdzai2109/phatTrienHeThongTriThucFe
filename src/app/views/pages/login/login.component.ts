@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false
       }, (error) => {
         this.toastr.error(
-          error.message ? error.message : error
+          "Email hoặc Mật khẩu sai!"
         );
       });
     }

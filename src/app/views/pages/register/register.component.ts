@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['login']);
         }
       }, (error) => {
-        error.message ? error.message : error
+        this.toastr.error(" Địa chỉ Email đã tồn tại")
       })
     }
   }
