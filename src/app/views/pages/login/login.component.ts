@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
         this.toastr.error('Thông tin đăng nhập không hợp lệ');
       }
       this.isLoading = false
+    },(error) => {
+      this.toastr.error(
+        error.message ? error.message : error
+      );
     });
   }
 
@@ -55,5 +59,8 @@ export class LoginComponent implements OnInit {
       userName: ['', [Validators.required]],
       passWord: ['', [Validators.required]],
     });
+  }
+  doRegiter(){
+    this.router.navigate(['register']);
   }
 }

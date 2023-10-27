@@ -5,15 +5,13 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm 
+              <form cForm
                [formGroup]="loginForm">
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input formControlName="userName" cFormControl placeholder="Username" />
+                  <span cInputGroupText>@</span>
+                  <input formControlName="userName" cFormControl placeholder="Email" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
@@ -30,6 +28,11 @@
                   <c-col xs="6">
                     <button cButton class="px-4" color="primary" (click)="doLogin()">
                       Login
+                    </button>
+                  </c-col>
+                  <c-col xs="6">
+                    <button cButton class="px-4" color="primary" (click)="doRegiter()">
+                      Regiter
                     </button>
                   </c-col>
                 </c-row>

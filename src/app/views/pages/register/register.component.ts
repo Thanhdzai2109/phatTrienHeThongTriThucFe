@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-
+import {FethApiService} from "../../../common/api/feth-api.service";
+import {OnInit} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit  {
 
-  constructor() { }
+  constructor(
+    private api: FethApiService,
+    private fb: FormBuilder
+  ) { }
+  ngOnInit() {
+
+  }
 
 }
