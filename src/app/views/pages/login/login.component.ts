@@ -34,24 +34,28 @@ export class LoginComponent implements OnInit {
       user_email: this.loginForm.controls['userName'].value,
       user_password: this.loginForm.controls['passWord'].value,
     };
-    this.api.post('http://localhost:8080/app_user/login', data).subscribe((res: any) => {
-      if (res) {
-        console.log(res['access_token']);
-        localStorage.setItem('token', res['access_token']);
+    if (this.loginForm.invalid) {
+      this.toastr.warning("Vui lòng nhập đầy đủ thông tin!")
+    } else {
+      this.api.post('http://localhost:8080/app_user/login', data).subscribe((res: any) => {
+        if (res) {
+          console.log(res['access_token']);
+          localStorage.setItem('token', res['access_token']);
 
-        const token = localStorage.getItem('token');
-        console.log(token);
-        this.toastr.success('Đăng nhập thành công !');
-        this.router.navigate(['health-care']);
-      } else {
-        this.toastr.error('Thông tin đăng nhập không hợp lệ');
-      }
-      this.isLoading = false
-    },(error) => {
-      this.toastr.error(
-        error.message ? error.message : error
-      );
-    });
+          const token = localStorage.getItem('token');
+          console.log(token);
+          this.toastr.success('Đăng nhập thành công !');
+          this.router.navigate(['health-care']);
+        } else {
+          this.toastr.error('Thông tin đăng nhập không hợp lệ');
+        }
+        this.isLoading = false
+      }, (error) => {
+        this.toastr.error(
+          error.message ? error.message : error
+        );
+      });
+    }
   }
 
   buidForm() {
@@ -60,7 +64,8 @@ export class LoginComponent implements OnInit {
       passWord: ['', [Validators.required]],
     });
   }
-  doRegiter(){
+
+  doRegiter() {
     this.router.navigate(['register']);
   }
 }
