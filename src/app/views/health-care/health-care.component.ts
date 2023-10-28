@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {FethApiService} from "../../common/api/feth-api.service";
+import {AuthService} from "../../common/auth/auth.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {FormBuilder} from "@angular/forms";
 
 
 @Component({
@@ -7,6 +12,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./health-care.component.scss'],
 })
 export class HealthCareComponent {
+  constructor(
+    private api: FethApiService,
+    private auth: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
+    private fb: FormBuilder
+  ) {
+  }
+
   public user: any = { id: 1 };
 
   public bot: any = { id: 0 };
@@ -24,5 +38,21 @@ export class HealthCareComponent {
 
   public sendMessage(e: any): void {
     this.messages = [...this.messages, e.message];
+  }
+
+  public doSent(){
+    // let data={
+    //      height: 20,
+    //      weight: 54,
+    //      old:24,
+    //      sex:1
+    // }
+    // this.api.post("http://localhost:8080/bmi/ketQua",data).subscribe(res=>{
+    //     if(res){
+    //       console.log(res)
+    //     }
+    // },(error=>{
+    //   this.toastr.error(error.message,'Thông báo')
+    // }))
   }
 }
