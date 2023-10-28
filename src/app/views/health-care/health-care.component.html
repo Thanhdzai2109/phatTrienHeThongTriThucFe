@@ -80,6 +80,9 @@
     <div *ngIf="bmiData.result?.message" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
       <div class="result">{{ bmiData.result?.message || '' }}</div>
     </div>
+    <div *ngIf="bmiData.result" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
+        <div class="result"> Chỉ số BMI của bạn là: {{ bmiData.result?.data.ketQua | number: '1.0-2' }}</div>
+    </div>
   </c-modal-body>
   <c-modal-footer>
     <button
