@@ -2,47 +2,26 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/app/environments/environment';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements HttpInterceptor {
   constructor(private router: Router) {}
-  authenticate(authen: any) {
-    sessionStorage.removeItem(environment.idToken);
-    sessionStorage.setItem(environment.idToken, authen['IdToken']);
-
-    sessionStorage.removeItem(environment.refreshToken);
-    sessionStorage.setItem(environment.refreshToken, authen['RefreshToken']);
-
-    const decoded: any = jwtDecode(authen['IdToken']);
-    const userInfo = JSON.stringify(decoded);
-    sessionStorage.setItem(environment.userInfo, userInfo);
-
-    this.router.navigate(['dashboard']);
-  }
-
-  isTokenExpired(): boolean {
-    let token = sessionStorage.getItem(environment.idToken);
-    const date = this.getTokenExpirationDate(token);
-    if (date === undefined) return false;
-    return !(date.valueOf() > new Date().valueOf());
-  }
-
-  getTokenExpirationDate(token: any): any {
-    const decoded: any = jwtDecode(token);
-    if (decoded.exp !== undefined) {
-      return null;
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const beartoken = localStorage.getItem('token');;
+    if (beartoken) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${beartoken}`,
+        },
+      });
     }
-    const date = new Date(0);
-    date.setUTCSeconds(decoded.exp);
-    return date;
-  }
 
-  getUserInfo(): any {
-    let userInfo = sessionStorage.getItem(environment.userInfo);
-    if (userInfo) {
-      return JSON.parse(userInfo);
-    }
-    return null;
+    return next.handle(request);
   }
 }

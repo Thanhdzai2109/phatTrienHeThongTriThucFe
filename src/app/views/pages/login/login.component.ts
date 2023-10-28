@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
         if (res) {
           console.log(res['access_token']);
           localStorage.setItem('token', res['access_token']);
-
           const token = localStorage.getItem('token');
           console.log(token);
           this.toastr.success('Đăng nhập thành công !');

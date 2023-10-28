@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {
   HashLocationStrategy,
   LocationStrategy,
   PathLocationStrategy,
 } from '@angular/common';
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgScrollbarModule } from 'ngx-scrollbar';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { ToastrModule } from 'ngx-toastr';
-import { AppComponent } from './app.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgScrollbarModule} from 'ngx-scrollbar';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {ToastrModule} from 'ngx-toastr';
+import {AppComponent} from './app.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 import {
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -44,10 +44,11 @@ import {
   ModalModule
 } from '@coreui/angular';
 
-import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { CertificateModule } from './views/certificate/certificate.module';
-import { HealthLayoutComponent } from './containers/health-layout/health-layout.component';
-import { HealthHeaderComponent } from './containers/health-layout/health-header/health-header.component';
+import {IconModule, IconSetService} from '@coreui/icons-angular';
+import {CertificateModule} from './views/certificate/certificate.module';
+import {HealthLayoutComponent} from './containers/health-layout/health-layout.component';
+import {HealthHeaderComponent} from './containers/health-layout/health-header/health-header.component';
+import {AuthService} from "./common/auth/auth.service";
 
 
 const APP_CONTAINERS = [
@@ -93,15 +94,24 @@ const APP_CONTAINERS = [
     NgScrollbarModule,
     CertificateModule,
     ModalModule,
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthService,
+      multi: true,
+    },
     IconSetService,
     Title,
   ],
+
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
