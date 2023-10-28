@@ -6,9 +6,9 @@
           <div class="card-title">Tính chỉ số BMI</div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-4" [cModalToggle]="weightGainCalculator.id">
         <div class="card p-4">
-          <div class="card-title">Tư vấn theo thể trạng</div>
+          <div class="card-title">Tư vấn tăng cân</div>
         </div>
       </div>
     </div>
@@ -68,6 +68,109 @@
             <option value="2">Nữ</option>
           </select>
         </div>
+      </div>
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+      [cModalToggle]="verticallyCenteredScrollableModal.id"
+      cButton
+      color="secondary"
+    >
+      Hủy
+    </button>
+    <button cButton color="primary">Gửi</button>
+  </c-modal-footer>
+</c-modal>
+
+
+
+<c-modal
+  #weightGainCalculator
+  [scrollable]="true"
+  alignment="center"
+  id="weightGainCalculator"
+>
+  <c-modal-header>
+    <div class="w-100 d-flex flex-row align-items-center">
+      <h2 cModalTitle class="mb-0">Ước tính lượng kalo để tăng cân</h2>
+      <button
+        [cModalToggle]="weightGainCalculator.id"
+        cButtonClose
+      ></button>
+    </div>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="grid">
+      <div class="row">
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Chiều cao</div>
+          <input type="number" name="" class="border-0 l-input flex-1" />
+          <div class="label ml-2">Cm</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Cân nặng</div>
+          <input type="number" name="" class="border-0 l-input flex-1" />
+          <div class="label ml-2">Kg</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Tuổi</div>
+          <input type="number" name="" class="border-0 l-input flex-1" />
+          <div class="label ml-2"></div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Giới tính</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+          >
+            <option value="1" selected>Nam</option>
+            <option value="2">Nữ</option>
+          </select>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Mức độ vận động</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+          >
+            <option value="1" selected>Tập thể dục nhẹ 1-2 lần/tuần</option>
+            <option value="2" selected>Tập thể dục vừa phải 2-3 lần/tuần</option>
+            <option value="3" selected>Tập thể dục chăm chỉ 4-5 lần/tuần</option>
+          </select>
+        </div>
+
+        <div
+        class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+      >
+        <div class="label mr-2">Trọng lượng mục tiêu</div>
+        <input type="number" name="" class="border-0 l-input flex-1" />
+        <div class="label ml-2">Kg</div>
+      </div>
+
+      <div
+      class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+    >
+      <div class="label mr-2">Tốc độ tăng cân</div>
+      <select
+        class="custom-select l-input border-0"
+        id="inputGroupSelect01"
+      >
+        <option value="1" selected>Bình thường 0,5kg/tuần</option>
+        <option value="2" selected>Nghiêm ngặt 1kg/tuần</option>
+      </select>
+    </div>
+
       </div>
     </div>
   </c-modal-body>

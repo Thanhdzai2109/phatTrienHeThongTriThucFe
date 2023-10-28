@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['login']);
         }
       }, (error) => {
-        error.message ? error.message : error
+        let mes = error.error.message ? error.error.message : error.message;
+        this.toastr.error(mes, '', { positionClass: 'toast-top-center', easeTime: 1000 });
       })
     }
   }
