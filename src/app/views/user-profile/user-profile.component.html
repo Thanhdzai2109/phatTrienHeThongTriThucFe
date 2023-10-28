@@ -59,18 +59,20 @@
                     <div class="col-sm-3">
                       <h5 class="mb-0">Full Name</h5>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                    <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
+                      {{ user.username }}
                     </div>
+                    <input class="l-input" [(ngModel)]="user.username" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <h5 class="mb-0">Email</h5>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
+                    <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
+                        {{ user.email }}
                     </div>
+                    <input class="l-input" [(ngModel)]="user.email" *ngIf="isEdit"/>   
                   </div>
                   <hr>
                   <div class="row">
@@ -102,7 +104,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      <button class="btn btn-info " (click)="isEdit = !isEdit">Edit</button>
                     </div>
                   </div>
                 </div>
