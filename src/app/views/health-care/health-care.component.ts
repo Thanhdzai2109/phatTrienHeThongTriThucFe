@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import {FethApiService} from "../../common/api/feth-api.service";
-import {AuthService} from "../../common/auth/auth.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {FormBuilder} from "@angular/forms";
-
+import { FethApiService } from '../../common/api/feth-api.service';
+import { AuthService } from '../../common/auth/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-health-care',
@@ -18,7 +17,14 @@ export class HealthCareComponent {
     private router: Router,
     private toastr: ToastrService,
     private fb: FormBuilder
-  ) {
+  ) {}
+
+  public bmiData: any = {
+    height: null,
+    weight: null,
+    old: null,
+    sex: null,
+    result: null
   }
 
   public user: any = { id: 1 };
@@ -42,10 +48,20 @@ export class HealthCareComponent {
 
   // BMI
   public bmiCalculator(e: any): void {
-    
+    this.api.post('http://localhost:8080/bmi/ketQua', this.bmiData).subscribe(
+      (res) => {
+        if (res) {
+          console.log(res);
+          this.bmiData.result = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
   }
 
-  public doSent(){
+  public doSent() {
     // let data={
     //      height: 20,
     //      weight: 54,

@@ -6,6 +6,7 @@ import { HealthCareComponent } from './health-care.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatModule } from '@progress/kendo-angular-conversational-ui';
+import { FormsModule } from '@angular/forms';
 
 import {
   AvatarModule,
@@ -40,7 +41,8 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
     NavModule,
     TableModule,
     TabsModule,
-    ModalModule
+    ModalModule,
+    FormsModule
   ]
 })
 export class HealthCareModule { }
