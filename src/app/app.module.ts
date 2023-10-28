@@ -49,6 +49,7 @@ import {CertificateModule} from './views/certificate/certificate.module';
 import {HealthLayoutComponent} from './containers/health-layout/health-layout.component';
 import {HealthHeaderComponent} from './containers/health-layout/health-header/health-header.component';
 import {AuthService} from "./common/auth/auth.service";
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 
 const APP_CONTAINERS = [
@@ -58,7 +59,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, HealthLayoutComponent, HealthHeaderComponent,],
+  declarations: [AppComponent, ...APP_CONTAINERS, HealthLayoutComponent, HealthHeaderComponent, UserProfileComponent,],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

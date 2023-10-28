@@ -8,6 +8,7 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { HealthCareComponent } from './views/health-care/health-care.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'health-care',
         component: HealthCareComponent,
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent,
       },
     ],
   },
