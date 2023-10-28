@@ -41,6 +41,7 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
+  ModalModule
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -56,7 +57,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, HealthLayoutComponent, HealthHeaderComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, HealthLayoutComponent, HealthHeaderComponent,],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -91,6 +92,7 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     CertificateModule,
+    ModalModule,
   ],
   providers: [
     {

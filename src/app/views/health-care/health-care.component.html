@@ -22,6 +22,7 @@
 
 <app-chat-bot></app-chat-bot>
 
+
 <c-modal
   #verticallyCenteredScrollableModal
   [scrollable]="true"
@@ -84,7 +85,7 @@
     >
       Hủy
     </button>
-    <button cButton color="primary">Gửi</button>
+    <button cButton color="primary" (click)="bmiCalculator()">Gửi</button>
   </c-modal-footer>
 </c-modal>
 

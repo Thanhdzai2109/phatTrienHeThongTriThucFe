@@ -25,4 +25,9 @@ export class HealthCareComponent {
   public sendMessage(e: any): void {
     this.messages = [...this.messages, e.message];
   }
+
+  // BMI
+  public bmiCalculator(e: any): void {
+    
+  }
 }
