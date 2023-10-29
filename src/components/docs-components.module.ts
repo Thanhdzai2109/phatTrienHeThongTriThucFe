@@ -8,6 +8,7 @@ import { DocsExampleComponent } from './docs-example/docs-example.component';
 import { DocsLinkComponent } from './docs-link/docs-link.component';
 import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
     RouterModule,
     TabsModule,
     UtilitiesModule,
-    CalloutModule
+    CalloutModule,
+    FormsModule
   ]
 })
 export class DocsComponentsModule {
