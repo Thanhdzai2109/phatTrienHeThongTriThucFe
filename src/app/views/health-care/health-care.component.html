@@ -115,21 +115,21 @@
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Chiều cao</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="weightGainData.height"/>
           <div class="label ml-2">Cm</div>
         </div>
         <div
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Cân nặng</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="weightGainData.weight"/>
           <div class="label ml-2">Kg</div>
         </div>
         <div
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Tuổi</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="weightGainData.old"/>
           <div class="label ml-2"></div>
         </div>
         <div
@@ -139,6 +139,7 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
+            [(ngModel)]="weightGainData.sex"
           >
             <option value="1" selected>Nam</option>
             <option value="2">Nữ</option>
@@ -151,6 +152,7 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
+            [(ngModel)]="weightGainData.activityLevel"
           >
             <option value="1" selected>Tập thể dục nhẹ 1-2 lần/tuần</option>
             <option value="2" selected>
@@ -166,7 +168,7 @@
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Trọng lượng mục tiêu</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="weightGainData.targetWeight"/>
           <div class="label ml-2">Kg</div>
         </div>
 
@@ -177,11 +179,16 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
+            [(ngModel)]="weightGainData.weightGain"
           >
             <option value="1" selected>Bình thường 0,5kg/tuần</option>
             <option value="2" selected>Nghiêm ngặt 1kg/tuần</option>
           </select>
         </div>
+        <div *ngIf="weightGainData.result" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
+          <div class="result"> Lượng calo cần tiêu thụ: {{ weightGainData.result?.data.ketQua | number: '1.0-2' }}/Ngày</div>
+      </div>
+
       </div>
     </div>
   </c-modal-body>
@@ -193,7 +200,7 @@
     >
       Hủy
     </button>
-    <button cButton color="primary">Gửi</button>
+    <button cButton color="primary" (click)="onWeightGainCalculator($event)">Gửi</button>
   </c-modal-footer>
 </c-modal>
 
@@ -216,21 +223,21 @@
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Chiều cao</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.height"/>
           <div class="label ml-2">Cm</div>
         </div>
         <div
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Cân nặng</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.weight"/>
           <div class="label ml-2">Kg</div>
         </div>
         <div
           class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
         >
           <div class="label mr-2">Tuổi</div>
-          <input type="number" name="" class="border-0 l-input flex-1" />
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.old"/>
           <div class="label ml-2"></div>
         </div>
         <div
@@ -240,6 +247,7 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
+            [(ngModel)]="kaloData.sex"
           >
             <option value="1" selected>Nam</option>
             <option value="2">Nữ</option>
@@ -252,6 +260,7 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
+            [(ngModel)]="kaloData.activityLevel"
           >
             <option value="1" selected>Tập thể dục nhẹ 1-2 lần/tuần</option>
             <option value="2" selected>
@@ -262,6 +271,10 @@
             </option>
           </select>
         </div>
+
+        <div *ngIf="kaloData.result" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
+          <div class="result"> Lượng calo tiêu thụ trong ngày: {{ kaloData.result?.data.ketQua | number: '1.0-2' }}</div>
+      </div>
 
       </div>
     </div>
@@ -274,6 +287,6 @@
     >
       Hủy
     </button>
-    <button cButton color="primary" (click)="doSent()">Gửi</button>
+    <button cButton color="primary" (click)="onKaloCalculator($event)">Gửi</button>
   </c-modal-footer>
 </c-modal>

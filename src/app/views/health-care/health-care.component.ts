@@ -27,6 +27,26 @@ export class HealthCareComponent {
     result: null
   }
 
+  public weightGainData: any = {
+    height: null,
+    weight: null,
+    old: null,
+    sex: null,
+    activityLevel: null,
+    targetWeight: null,
+    weightGain: null,
+    result: null
+  }
+
+  public kaloData: any = {
+    height: null,
+    weight: null,
+    old: null,
+    sex: null,
+    activityLevel: null,
+    result: null
+  }
+
   public user: any = { id: 1 };
 
   public bot: any = { id: 0 };
@@ -51,8 +71,35 @@ export class HealthCareComponent {
     this.api.post('http://localhost:8080/bmi/ketQua', this.bmiData).subscribe(
       (res) => {
         if (res) {
-          console.log(res);
           this.bmiData.result = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
+  }
+
+  // weightGainCalculator
+  public onWeightGainCalculator(e: any): void {
+    this.api.post('http://localhost:8080/Brm/uocTinhCalo', this.weightGainData).subscribe(
+      (res) => {
+        if (res) {
+          this.weightGainData.result = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
+  }
+
+  // kalo per day calulator
+  public onKaloCalculator(e: any): void {
+    this.api.post('http://localhost:8080/Brm/ketQua', this.kaloData).subscribe(
+      (res) => {
+        if (res) {
+          this.kaloData.result = res;
         }
       },
       (error) => {
