@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {GptService} from "../../app/common/chat/gpt.service";
 import {ToastrService} from "ngx-toastr";
+import {FethApiService} from "../../app/common/api/feth-api.service";
 
 @Component({
   selector: 'app-chat-bot',
@@ -11,7 +12,8 @@ export class ChatBotComponent {
   messages: string[] = [];
   newMessage: string = '';
 
-  constructor(private chatbotService: GptService, private toastr: ToastrService,) {
+  constructor(private chatbotService: GptService, private toastr: ToastrService,
+              private api: FethApiService,) {
 
   }
 
@@ -19,10 +21,13 @@ export class ChatBotComponent {
 
   onSubmit = () => {
     if (this.newMessage) {
+      debugger
       this.messages.push(`You: ${this.newMessage}`);
       this.chatbotService.callGPT(this.newMessage).subscribe((response: any) => {
-        this.messages.push(`Chatbot: ${response.message}`);
+        this.messages.push(`Chatbot: ${response}`);
         this.newMessage = '';
+        console.log("dâ",response)
+
       }, error => {
         this.toastr.error(error.message,'Thông báo')
       });

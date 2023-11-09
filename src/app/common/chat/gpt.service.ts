@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GptService {
-  private apiUrl = 'https://api.openai.com/v1/chat/completions'; 
-  private apiKey = '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';
+  private apiUrl = 'http://localhost:8080/chat/request';
 
   constructor(private http: HttpClient) { }
 
-  callGPT(message: string) {
-    return this.http.post(this.apiUrl, { message }, { headers: { 'Authorization': `Bearer ${this.apiKey}` } });
+  // callGPT(userMessage: any: Observable<string> {
+  //   return this.http.post(this.apiUrl, { userMessage } );
+  // }
+  callGPT(message: string): Observable<string> {
+    const url = `${this.apiUrl}?userMessage=${message}`;
+    return this.http.get<string>(url, { responseType: 'text' as 'json' });
   }
-
 }
