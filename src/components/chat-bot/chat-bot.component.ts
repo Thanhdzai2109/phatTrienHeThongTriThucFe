@@ -9,7 +9,7 @@ import {FethApiService} from "../../app/common/api/feth-api.service";
   styleUrls: ['./chat-bot.component.scss']
 })
 export class ChatBotComponent {
-  messages: string[] = [];
+  messages: any = [];
   newMessage: string = '';
 
   constructor(private chatbotService: GptService, private toastr: ToastrService,
@@ -21,13 +21,10 @@ export class ChatBotComponent {
 
   onSubmit = () => {
     if (this.newMessage) {
-      debugger
-      this.messages.push(`You: ${this.newMessage}`);
+      this.messages.push({ author: "you", message: this.newMessage });
       this.chatbotService.callGPT(this.newMessage).subscribe((response: any) => {
-        this.messages.push(`Chatbot: ${response}`);
+        this.messages.push({ author: "bot", message: response });
         this.newMessage = '';
-        console.log("dâ",response)
-
       }, error => {
         this.toastr.error(error.message,'Thông báo')
       });

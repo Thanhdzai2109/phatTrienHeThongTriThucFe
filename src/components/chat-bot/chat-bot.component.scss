@@ -61,7 +61,7 @@ body {
 
 .chat-box-header {
     background: #5A5EB9;
-    height: 70px;
+    padding-bottom: 14px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     color: white;
@@ -208,4 +208,23 @@ body {
 .cm-msg-button {
     clear: both;
     margin-bottom: 70px;
+}
+
+.chat-logs {
+    .group-message {
+        margin-bottom: 8px;
+        &.right {
+            justify-content: end;
+            .text {
+                background-color: #5865C3;
+            }
+        }
+    }
+    .text {
+        width: fit-content;
+        padding: 4px 8px;
+        border-radius: 8px;
+        background-color: #7d7d82;
+        color: #FFFFFF;
+    }
 }
