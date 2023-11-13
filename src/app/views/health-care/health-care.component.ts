@@ -108,6 +108,33 @@ export class HealthCareComponent {
     );
   }
 
+
+  public onPhysicalMenu(e: any): void {
+    this.api.post('http://localhost:8080/Brm/ketQua', this.kaloData).subscribe(
+      (res) => {
+        if (res) {
+          this.kaloData.result = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
+  }
+
+  public onPhenomenalMenu(e: any): void {
+    this.api.post('http://localhost:8080/Brm/ketQua', this.kaloData).subscribe(
+      (res) => {
+        if (res) {
+          this.kaloData.result = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
+  }
+
   public doSent() {
     // let data={
     //      height: 20,

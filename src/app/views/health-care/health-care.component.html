@@ -1,6 +1,9 @@
 <div class="h-100">
   <div class="grid">
     <div class="row">
+      <div class="col-12">
+        <h2 class="title">Tất cả</h2>
+      </div>
       <div class="col-4" [cModalToggle]="verticallyCenteredScrollableModal.id">
         <div class="card p-4">
           <div class="card-title">Tính chỉ số BMI</div>
@@ -17,12 +20,27 @@
         </div>
       </div>
     </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <h2 class="title">Trẻ 3 - 5 tuổi</h2>
+      </div>
+      <div class="col-4" [cModalToggle]="physicalMenu.id">
+        <div class="card p-4">
+          <div class="card-title">Chế độ ăn theo thể trạng</div>
+        </div>
+      </div>
+      <div class="col-4" [cModalToggle]="phenomenalMenu.id">
+        <div class="card p-4">
+          <div class="card-title">Chế độ ăn theo hiện tượng</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <app-chat-bot></app-chat-bot>
 
-
+<!-- --------------------------------------------------------------------------------------- -->
 <c-modal
   #verticallyCenteredScrollableModal
   [scrollable]="true"
@@ -96,6 +114,7 @@
   </c-modal-footer>
 </c-modal>
 
+<!-- --------------------------------------------------------------------------------------- -->
 <c-modal
   #weightGainCalculator
   [scrollable]="true"
@@ -203,7 +222,7 @@
     <button cButton color="primary" (click)="onWeightGainCalculator($event)">Gửi</button>
   </c-modal-footer>
 </c-modal>
-
+<!-- --------------------------------------------------------------------------------------- -->
 <c-modal
   #kaloCalculator
   [scrollable]="true"
@@ -288,5 +307,183 @@
       Hủy
     </button>
     <button cButton color="primary" (click)="onKaloCalculator($event)">Gửi</button>
+  </c-modal-footer>
+</c-modal>
+<!-- --------------------------------------------------------------------------------------- -->
+
+<c-modal
+  #physicalMenu
+  [scrollable]="true"
+  alignment="center"
+  id="physicalMenu"
+>
+  <c-modal-header>
+    <div class="w-100 d-flex flex-row align-items-center">
+      <h2 cModalTitle class="mb-0">Chế độ ăn theo thể trạng</h2>
+      <button [cModalToggle]="physicalMenu.id" cButtonClose></button>
+    </div>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="grid">
+      <div class="row">
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Chiều cao</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.height"/>
+          <div class="label ml-2">Cm</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Cân nặng</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.weight"/>
+          <div class="label ml-2">Kg</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Tuổi</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.old"/>
+          <div class="label ml-2"></div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Giới tính</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+            [(ngModel)]="kaloData.sex"
+          >
+            <option value="1" selected>Nam</option>
+            <option value="2">Nữ</option>
+          </select>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Mức độ vận động</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+            [(ngModel)]="kaloData.activityLevel"
+          >
+            <option value="1" selected>Tập thể dục nhẹ 1-2 lần/tuần</option>
+            <option value="2" selected>
+              Tập thể dục vừa phải 2-3 lần/tuần
+            </option>
+            <option value="3" selected>
+              Tập thể dục chăm chỉ 4-5 lần/tuần
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="kaloData.result" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
+          <div class="result"> Lượng calo tiêu thụ trong ngày: {{ kaloData.result?.data.ketQua | number: '1.0-2' }}</div>
+      </div>
+
+      </div>
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+      [cModalToggle]="physicalMenu.id"
+      cButton
+      color="secondary"
+    >
+      Hủy
+    </button>
+    <button cButton color="primary" (click)="onPhysicalMenu($event)">Gửi</button>
+  </c-modal-footer>
+</c-modal>
+
+
+
+
+<c-modal
+  #phenomenalMenu
+  [scrollable]="true"
+  alignment="center"
+  id="phenomenalMenu"
+>
+  <c-modal-header>
+    <div class="w-100 d-flex flex-row align-items-center">
+      <h2 cModalTitle class="mb-0">Chế độ ăn theo hiện tượng</h2>
+      <button [cModalToggle]="phenomenalMenu.id" cButtonClose></button>
+    </div>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="grid">
+      <div class="row">
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Chiều cao</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.height"/>
+          <div class="label ml-2">Cm</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Cân nặng</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.weight"/>
+          <div class="label ml-2">Kg</div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Tuổi</div>
+          <input type="number" name="" class="border-0 l-input flex-1" [(ngModel)]="kaloData.old"/>
+          <div class="label ml-2"></div>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Giới tính</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+            [(ngModel)]="kaloData.sex"
+          >
+            <option value="1" selected>Nam</option>
+            <option value="2">Nữ</option>
+          </select>
+        </div>
+        <div
+          class="col-12 d-flex flex-row justify-content-between align-items-center l-row"
+        >
+          <div class="label mr-2">Mức độ vận động</div>
+          <select
+            class="custom-select l-input border-0"
+            id="inputGroupSelect01"
+            [(ngModel)]="kaloData.activityLevel"
+          >
+            <option value="1" selected>Tập thể dục nhẹ 1-2 lần/tuần</option>
+            <option value="2" selected>
+              Tập thể dục vừa phải 2-3 lần/tuần
+            </option>
+            <option value="3" selected>
+              Tập thể dục chăm chỉ 4-5 lần/tuần
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="kaloData.result" class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
+          <div class="result"> Lượng calo tiêu thụ trong ngày: {{ kaloData.result?.data.ketQua | number: '1.0-2' }}</div>
+      </div>
+
+      </div>
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+      [cModalToggle]="phenomenalMenu.id"
+      cButton
+      color="secondary"
+    >
+      Hủy
+    </button>
+    <button cButton color="primary" (click)="onPhenomenalMenu($event)">Gửi</button>
   </c-modal-footer>
 </c-modal>
