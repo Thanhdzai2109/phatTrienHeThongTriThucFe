@@ -47,7 +47,20 @@ export class HealthCareComponent {
     result: null
   }
 
+  public physicalMenuData: any = {
+    height: null,
+    weight: null,
+    old: null,
+    gender: null,
+    result: null
+  }
+
+  public resByHienTuong: any = {};
+
   public user: any = { id: 1 };
+
+  public phenomenals: any = [];
+  public phenomenalSelected: any = [];
 
   public bot: any = { id: 0 };
 
@@ -61,6 +74,10 @@ export class HealthCareComponent {
       text: 'Definitely!',
     },
   ];
+
+  ngOnInit() {
+    this.getHienTuongs();
+  }
 
   public sendMessage(e: any): void {
     this.messages = [...this.messages, e.message];
@@ -110,10 +127,10 @@ export class HealthCareComponent {
 
 
   public onPhysicalMenu(e: any): void {
-    this.api.post('http://localhost:8080/Brm/ketQua', this.kaloData).subscribe(
+    this.api.post('http://localhost:8080/api/physical-menu', this.physicalMenuData).subscribe(
       (res) => {
         if (res) {
-          this.kaloData.result = res;
+          this.physicalMenuData.result = res;
         }
       },
       (error) => {
@@ -123,16 +140,51 @@ export class HealthCareComponent {
   }
 
   public onPhenomenalMenu(e: any): void {
-    this.api.post('http://localhost:8080/Brm/ketQua', this.kaloData).subscribe(
+    let pathVal = this.collectData();
+    this.api.post('http://localhost:8080/api/phenomenal-menu?hienTuong=' + pathVal).subscribe(
       (res) => {
         if (res) {
-          this.kaloData.result = res;
+          this.resByHienTuong = res;
         }
       },
       (error) => {
         this.toastr.error(error.message, 'Thông báo');
       }
     );
+  }
+
+  public getHienTuongs(): void {
+    this.api.get('http://localhost:8080/api/phenomenon').subscribe(
+      (res) => {
+        if (res) {
+          this.phenomenals = res;
+        }
+      },
+      (error) => {
+        this.toastr.error(error.message, 'Thông báo');
+      }
+    );
+  }
+
+  public addBieuHien(bieuHien: any): void {
+    let check = this.phenomenalSelected.find((item: any) => item.id == bieuHien?.id)
+    if(check) {
+      // let index = this.phenomenalSelected.findIndex(item => item.id = bieuHien.id)
+      this.phenomenalSelected = this.phenomenalSelected.filter((item: any) => item.id != bieuHien?.id);
+    }else {
+      this.phenomenalSelected.push(bieuHien);
+    }
+  }
+
+  collectData() {
+    let me = this;
+    let items = this.phenomenalSelected;
+    let arr = [];
+    for(let i = 0; i< items.length; i++) {
+        arr.push(items[i].bieuHien)
+    }
+    let query = arr.join(";");
+    return query
   }
 
   public doSent() {
