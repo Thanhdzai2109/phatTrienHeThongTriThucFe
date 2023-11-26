@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {GptService} from "../../app/common/chat/gpt.service";
 import {ToastrService} from "ngx-toastr";
 import {FethApiService} from "../../app/common/api/feth-api.service";
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-chat-bot',
@@ -13,7 +14,7 @@ export class ChatBotComponent {
   newMessage: string = '';
 
   constructor(private chatbotService: GptService, private toastr: ToastrService,
-              private api: FethApiService,) {
+              private api: FethApiService,private sanitized: DomSanitizer) {
 
   }
 
@@ -23,7 +24,7 @@ export class ChatBotComponent {
     if (this.newMessage) {
       this.messages.push({ author: "you", message: this.newMessage });
       this.chatbotService.callGPT(this.newMessage).subscribe((response: any) => {
-        this.messages.push({ author: "bot", message: response });
+        this.messages.push({ author: "bot", message: this.sanitized.bypassSecurityTrustHtml(response) });
         this.newMessage = '';
       }, error => {
         this.toastr.error(error.message,'Thông báo')

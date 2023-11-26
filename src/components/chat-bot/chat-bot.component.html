@@ -13,7 +13,7 @@
       <div class="chat-box-overlay"></div>
       <div class="chat-logs d-flex flex-column">
         <div class="group-message d-flex flex-row" [ngClass]="{ 'right' : item.author == 'you' }" *ngFor="let item of messages">
-          <div class="text">{{ item.message }}</div>
+          <div class="text" [innerHTML]="item.message"></div>
         </div>
       </div>
       <!--chat-log -->
