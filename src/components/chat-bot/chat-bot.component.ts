@@ -3,6 +3,8 @@ import {GptService} from "../../app/common/chat/gpt.service";
 import {ToastrService} from "ngx-toastr";
 import {FethApiService} from "../../app/common/api/feth-api.service";
 import { DomSanitizer } from '@angular/platform-browser'
+import * as $ from 'jquery';
+import { forEach } from 'lodash-es';
 
 @Component({
   selector: 'app-chat-bot',
@@ -17,18 +19,34 @@ export class ChatBotComponent {
               private api: FethApiService,private sanitized: DomSanitizer) {
 
   }
-
   showChat = false;
 
-  onSubmit = () => {
-    if (this.newMessage) {
-      this.messages.push({ author: "you", message: this.newMessage });
-      this.chatbotService.callGPT(this.newMessage).subscribe((response: any) => {
+  onSubmit = (text: any) => {
+    if (text) {
+      this.messages.push({ author: "you", message: text });
+      this.chatbotService.callGPT(text).subscribe((response: any) => {
         this.messages.push({ author: "bot", message: this.sanitized.bypassSecurityTrustHtml(response) });
+        if(text == 'help'){
+          setTimeout(() => {
+            this.afterRenderHelp();
+          })
+        }
         this.newMessage = '';
       }, error => {
         this.toastr.error(error.message,'Thông báo')
       });
+    }
+  }
+
+  afterRenderHelp = () => {
+    let chatBodyEl = $('#chatbot');
+    let buttons = chatBodyEl.find('button');
+    for(let i = 0; i<= buttons.length; i++){
+      let btn = $(buttons[i]);
+      let text = btn.find('text').text();
+      btn.on('click', () => {
+        this.onClickButton(text);
+      })
     }
   }
 
@@ -38,6 +56,10 @@ export class ChatBotComponent {
 
   close = (e?: any) => {
     this.showChat = false;
+  }
+
+  onClickButton = (text: any) => {
+    this.onSubmit(`${text}`);
   }
 
 }
