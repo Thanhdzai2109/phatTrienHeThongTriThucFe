@@ -4,6 +4,7 @@ import { AuthService } from '../../common/auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder } from '@angular/forms';
+import * as jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-health-care',
@@ -19,19 +20,26 @@ export class HealthCareComponent {
     private fb: FormBuilder
   ) {}
 
+  get userInfo(): any {
+    let userString = localStorage.getItem("user");
+    if(userString){
+      return JSON.parse(userString);
+    }
+    return {}
+  }
   public bmiData: any = {
-    height: null,
-    weight: null,
-    old: null,
-    sex: null,
+    height: this.userInfo.height,
+    weight: this.userInfo.weight,
+    old: this.userInfo.age,
+    sex: this.userInfo.gender,
     result: null
   }
 
   public weightGainData: any = {
-    height: null,
-    weight: null,
-    old: null,
-    sex: null,
+    height: this.userInfo.height,
+    weight: this.userInfo.weight,
+    old: this.userInfo.age,
+    sex: this.userInfo.gender,
     activityLevel: null,
     targetWeight: null,
     weightGain: null,
@@ -39,10 +47,10 @@ export class HealthCareComponent {
   }
 
   public kaloData: any = {
-    height: null,
-    weight: null,
-    old: null,
-    sex: null,
+    height: this.userInfo.height,
+    weight: this.userInfo.weight,
+    old: this.userInfo.age,
+    sex: this.userInfo.gender,
     activityLevel: null,
     result: null
   }
@@ -77,6 +85,13 @@ export class HealthCareComponent {
 
   ngOnInit() {
     this.getHienTuongs();
+
+    if(this.userInfo){
+      this.bmiData.height = this.userInfo.height;
+      this.bmiData.weight = this.userInfo.weight;
+      this.bmiData.old = this.userInfo.age;
+      this.bmiData.sex = this.userInfo.gender;
+    }
   }
 
   public sendMessage(e: any): void {

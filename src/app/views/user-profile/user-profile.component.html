@@ -2,18 +2,18 @@
     <div class="main-body">
     
           <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
+          <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
               <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
-          </nav>
+          </nav> -->
           <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-              <div class="card">
+              <!-- <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
@@ -26,8 +26,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card mt-3">
+              </div> -->
+              <!-- <div class="card mt-3">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h5 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h5>
@@ -50,19 +50,19 @@
                     <span class="text-secondary">bootdey</span>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h5 class="mb-0">Full Name</h5>
+                      <h5 class="mb-0">Tên</h5>
                     </div>
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
-                      {{ user.username }}
+                      {{ user.user_name }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.username" *ngIf="isEdit"/>
+                    <input class="l-input" [(ngModel)]="user.user_name" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
@@ -70,47 +70,64 @@
                       <h5 class="mb-0">Email</h5>
                     </div>
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
-                        {{ user.email }}
+                        {{ user.user_email }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.email" *ngIf="isEdit"/>   
+                    <input class="l-input" [(ngModel)]="user.user_email" *ngIf="isEdit"/>   
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h5 class="mb-0">Phone</h5>
+                      <h5 class="mb-0">Chiều cao</h5>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                    <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
+                        {{ user.height }}
                     </div>
+                    <input class="l-input" [(ngModel)]="user.height" *ngIf="isEdit"/>   
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h5 class="mb-0">Mobile</h5>
+                      <h5 class="mb-0">Cân nặng</h5>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
+                    <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
+                        {{ user.weight }}
                     </div>
+                    <input class="l-input" [(ngModel)]="user.weight" *ngIf="isEdit"/>   
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h5 class="mb-0">Address</h5>
+                      <h5 class="mb-0">Độ tuổi</h5>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                    <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
+                        {{ user.age }}
                     </div>
+                    <input class="l-input" [(ngModel)]="user.age" *ngIf="isEdit"/>   
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h5 class="mb-0">Độ tuổi</h5>
+                    </div>
+                    <select
+                    class="custom-select l-input border-0"
+                    id="inputGroupSelect01"
+                    [(ngModel)]="user.gender"
+                  >
+                    <option value="1" selected>Nam</option>
+                    <option value="2">Nữ</option>
+                  </select>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <button class="btn btn-info " (click)="isEdit = !isEdit">Edit</button>
+                      <button class="btn btn-info " (click)="updateUser()">Edit</button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="row gutters-sm">
+              <!-- <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
@@ -165,7 +182,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
 
