@@ -23,26 +23,28 @@ import {
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
   declarations: [HealthCareComponent],
-  imports: [
-    CommonModule,
-    ChatModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    DocsComponentsModule,
-    AvatarModule,
-    ButtonModule,
-    CardModule,
-    FormModule,
-    GridModule,
-    NavModule,
-    TableModule,
-    TabsModule,
-    ModalModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        ChatModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        DocsComponentsModule,
+        AvatarModule,
+        ButtonModule,
+        CardModule,
+        FormModule,
+        GridModule,
+        NavModule,
+        TableModule,
+        TabsModule,
+        ModalModule,
+        FormsModule,
+        MatCheckboxModule
+    ]
 })
 export class HealthCareModule { }

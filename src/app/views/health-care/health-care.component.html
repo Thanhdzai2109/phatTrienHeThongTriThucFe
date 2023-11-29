@@ -486,9 +486,7 @@
               [ngClass]="{ checked: phenomenalSelected.includes(item) }"
               *ngFor="let item of phenomenals"
             >
-              <span class="checkbox" (click)="addBieuHien(item)">
-                <i class="fa-solid fa-check check-icon"></i>
-              </span>
+              <mat-checkbox (click)="addBieuHien(item)"></mat-checkbox>
               <span class="item-text">{{ item.bieuHien }}</span>
             </li>
           </ul>
@@ -497,13 +495,13 @@
 
       <div class="row">
         <div
-        *ngIf="true"
-        class="d-flex flex-row justify-content-center w-100 mt-4 mb-4"
-      >
-        <div class="result">
-          {{ resByHienTuong.message || "" }}
+          *ngIf="true"
+          class="d-flex flex-row justify-content-center w-100 mt-4 mb-4"
+        >
+          <div class="result">
+            {{ resByHienTuong.message || "" }}
+          </div>
         </div>
-      </div>
       </div>
 
     </div>
