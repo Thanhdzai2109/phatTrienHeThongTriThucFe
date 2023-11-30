@@ -1,4 +1,7 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center"
+    style=" background: url(/assets/benhvien.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%">
   <c-container>
     <c-row class="justify-content-center w-60">
       <c-col md="8" class="form-login">
@@ -7,7 +10,8 @@
             <c-card-body>
               <form cForm
                [formGroup]="loginForm">
-                <h1>Đăng nhập</h1>
+                <h1 style=" color: green;
+    font-weight: bold;">Hệ thống tư vấn sức khỏe</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>@</span>
