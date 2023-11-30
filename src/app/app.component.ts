@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-  title = 'Trang quản trị';
+  title = 'Tư vấn sức khỏe';
   userInfo: any = {}
   user: any = {}
 
