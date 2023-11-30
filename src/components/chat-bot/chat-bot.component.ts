@@ -43,6 +43,7 @@ export class ChatBotComponent {
     let buttons = chatBodyEl.find('button');
     for(let i = 0; i<= buttons.length; i++){
       let btn = $(buttons[i]);
+      btn.css("width", "100%")
       let text = btn.find('text').text();
       btn.on('click', () => {
         this.onClickButton(text);

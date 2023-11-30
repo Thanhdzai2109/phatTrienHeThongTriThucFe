@@ -196,7 +196,7 @@ export class HealthCareComponent {
     let items = this.phenomenalSelected;
     let arr = [];
     for(let i = 0; i< items.length; i++) {
-        arr.push(items[i].bieuHien)
+        arr.push(items[i].symptoms)
     }
     let query = arr.join(";");
     return query

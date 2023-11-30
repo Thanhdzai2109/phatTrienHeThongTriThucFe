@@ -212,6 +212,8 @@ body {
 
 .chat-logs {
     .group-message {
+        max-width: 310px;
+        overflow-wrap: anywhere;
         margin-bottom: 8px;
         &.right {
             justify-content: end;
@@ -226,5 +228,11 @@ body {
         border-radius: 8px;
         background-color: #7d7d82;
         color: #FFFFFF;
+    }
+}
+
+:deep(.group-message) {
+    button {
+        border-radius: 5px;
     }
 }
