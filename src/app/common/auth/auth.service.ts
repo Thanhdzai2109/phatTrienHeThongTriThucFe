@@ -13,7 +13,7 @@ export class AuthService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const beartoken = localStorage.getItem('token');;
+    const beartoken = localStorage.getItem('token');
     if (beartoken) {
       request = request.clone({
         setHeaders: {
@@ -23,5 +23,10 @@ export class AuthService implements HttpInterceptor {
     }
 
     return next.handle(request);
+  }
+
+  removeToken(): void {
+    var beartoken = localStorage.getItem('token');
+    localStorage.removeItem('token');
   }
 }
