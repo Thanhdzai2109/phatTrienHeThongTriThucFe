@@ -1,6 +1,6 @@
 <div class="container">
     <div class="main-body">
-    
+
           <!-- Breadcrumb -->
           <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
@@ -10,7 +10,7 @@
             </ol>
           </nav> -->
           <!-- /Breadcrumb -->
-    
+
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <!-- <div class="card">
@@ -72,7 +72,7 @@
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
                         {{ user.user_email }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.user_email" *ngIf="isEdit"/>   
+                    <input class="l-input" [(ngModel)]="user.user_email" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
@@ -82,7 +82,7 @@
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
                         {{ user.height }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.height" *ngIf="isEdit"/>   
+                    <input class="l-input" [(ngModel)]="user.height" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
@@ -92,7 +92,7 @@
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
                         {{ user.weight }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.weight" *ngIf="isEdit"/>   
+                    <input class="l-input" [(ngModel)]="user.weight" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
@@ -102,7 +102,7 @@
                     <div class="col-sm-9 text-secondary" *ngIf="!isEdit">
                         {{ user.age }}
                     </div>
-                    <input class="l-input" [(ngModel)]="user.age" *ngIf="isEdit"/>   
+                    <input class="l-input" [(ngModel)]="user.age" *ngIf="isEdit"/>
                   </div>
                   <hr>
                   <div class="row">
@@ -120,8 +120,8 @@
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-12">
-                      <button class="btn btn-info " (click)="updateUser()">Edit</button>
+                    <div class="col-sm-12 text-end">
+                      <button class="btn btn-primary " (click)="updateUser()">Cập nhật <i class="fa fa-edit"></i></button>
                     </div>
                   </div>
                 </div>
