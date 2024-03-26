@@ -33,6 +33,7 @@ export class UserProfileComponent {
   }
 
   public getUser(): void {
+    debugger
     this.apiService.get('http://localhost:8080/app_user/search/' + this.userInfo.uid).subscribe(
       (res) => {
         if (res) {
@@ -47,7 +48,7 @@ export class UserProfileComponent {
       (res) => {
       }
       );
-      
+
       if (res) {
         this.localStorage.setItem('user' ,this.user);
         this.toastr.success("Cập nhật thành công");

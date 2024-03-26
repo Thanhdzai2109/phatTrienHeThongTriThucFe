@@ -428,8 +428,7 @@
           <select
             class="custom-select l-input border-0"
             id="inputGroupSelect01"
-            [(ngModel)]="physicalMenuData.gender"
-          >
+            [(ngModel)]="physicalMenuData.gender">
             <option value="0" selected>Nam</option>
             <option value="1">Nữ</option>
           </select>
@@ -437,8 +436,7 @@
 
         <div
           *ngIf="physicalMenuData.result"
-          class="d-flex flex-row justify-content-center w-100 mt-4 mb-4"
-        >
+          class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
           <div class="result fw-4">
             Lượng calo tiêu thụ trong ngày:
             {{ physicalMenuData.result?.message }}
@@ -479,31 +477,26 @@
               <i class="fa-solid fa-chevron-down"></i>
             </span>
           </div>
-
           <ul class="list-items">
             <li
               class="item"
               [ngClass]="{ checked: phenomenalSelected.includes(item) }"
               *ngFor="let item of phenomenals"
             >
-              <mat-checkbox (click)="addBieuHien(item)"></mat-checkbox>
+              <mat-checkbox (click)="addBieuHien(item)" color="primary"></mat-checkbox>
               <span class="item-text">{{ item.symptoms }}</span>
             </li>
           </ul>
         </div>
       </div>
-
       <div class="row">
-        <div
-          *ngIf="true"
-          class="d-flex flex-row justify-content-center w-100 mt-4 mb-4"
-        >
+        <div *ngIf="true"
+          class="d-flex flex-row justify-content-center w-100 mt-4 mb-4">
           <div class="result">
             {{ resByHienTuong.message || "" }}
           </div>
         </div>
       </div>
-
     </div>
   </c-modal-body>
   <c-modal-footer>

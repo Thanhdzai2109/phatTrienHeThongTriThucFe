@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder } from '@angular/forms';
 import * as jwtDecode from 'jwt-decode';
+import {ErrorServiceService} from "../../common/error/error-service.service";
 
 @Component({
   selector: 'app-health-care',
@@ -14,10 +15,9 @@ import * as jwtDecode from 'jwt-decode';
 export class HealthCareComponent {
   constructor(
     private api: FethApiService,
-    private auth: AuthService,
-    private router: Router,
     private toastr: ToastrService,
-    private fb: FormBuilder
+    private errorMessege : ErrorServiceService,
+    private router : Router,
   ) {}
 
   get userInfo(): any {
@@ -176,7 +176,8 @@ export class HealthCareComponent {
         }
       },
       (error) => {
-        this.toastr.error(error.message, 'Thông báo');
+        this.toastr.warning(this.errorMessege.errorMessege(), 'Thông báo');
+        this.router.navigate(['login']);
       }
     );
   }
