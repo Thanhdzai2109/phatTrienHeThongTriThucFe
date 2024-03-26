@@ -26,7 +26,6 @@ export class AuthService implements HttpInterceptor {
   }
 
   removeToken(): void {
-    var beartoken = localStorage.getItem('token');
     localStorage.removeItem('token');
   }
 }
