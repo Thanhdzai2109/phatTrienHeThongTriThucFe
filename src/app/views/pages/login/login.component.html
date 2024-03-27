@@ -1,7 +1,4 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center"
-    style=" background: url(/assets/benhvien.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%">
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center back-ground">
   <c-container>
     <c-row class="justify-content-center w-60">
       <c-col md="8" class="form-login">
@@ -30,13 +27,14 @@
                 </c-input-group>
                 <c-row>
                   <c-col xs="12">
-                    <button cButton class="px-4 w-100" color="primary" (click)="doLogin()">
-                      Đăng nhập
+                    <button cButton class="px-4 w-100" color="success" (click)="doLogin()">
+                      Đăng nhập <i class="fa fa-sign-in"></i>
                     </button>
                   </c-col>
                   <c-col xs="12" class="mt-4">
                     <button cButton class="px-4 w-100" color="primary" (click)="doRegiter()">
                       Đăng ký
+                      <i class="fa fa-fw fa-address-book-o" aria-hidden="true"></i>
                     </button>
                   </c-col>
                 </c-row>

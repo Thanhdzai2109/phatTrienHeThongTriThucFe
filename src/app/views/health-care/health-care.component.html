@@ -379,7 +379,7 @@
   <c-modal-header>
     <div class="w-100 d-flex flex-row align-items-center">
       <h2 cModalTitle class="mb-0">Chế độ ăn theo thể trạng</h2>
-      <button [cModalToggle]="physicalMenu.id" cButtonClose></button>
+      <button  [cModalToggle]="physicalMenu.id" cButtonClose ></button>
     </div>
   </c-modal-header>
   <c-modal-body>
@@ -446,7 +446,7 @@
     </div>
   </c-modal-body>
   <c-modal-footer>
-    <button [cModalToggle]="physicalMenu.id" cButton color="danger">
+    <button [cModalToggle]="physicalMenu.id" cButton color="danger" >
       Hủy <i class="fa fa-close"></i>
     </button>
     <button cButton color="primary" (click)="onPhysicalMenu($event)">

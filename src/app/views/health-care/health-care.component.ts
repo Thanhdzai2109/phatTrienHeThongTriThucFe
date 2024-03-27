@@ -185,7 +185,6 @@ export class HealthCareComponent {
   public addBieuHien(bieuHien: any): void {
     let check = this.phenomenalSelected.find((item: any) => item.id == bieuHien?.id)
     if(check) {
-      // let index = this.phenomenalSelected.findIndex(item => item.id = bieuHien.id)
       this.phenomenalSelected = this.phenomenalSelected.filter((item: any) => item.id != bieuHien?.id);
     }else {
       this.phenomenalSelected.push(bieuHien);
@@ -203,19 +202,4 @@ export class HealthCareComponent {
     return query
   }
 
-  public doSent() {
-    // let data={
-    //      height: 20,
-    //      weight: 54,
-    //      old:24,
-    //      sex:1
-    // }
-    // this.api.post("http://localhost:8080/bmi/ketQua",data).subscribe(res=>{
-    //     if(res){
-    //       console.log(res)
-    //     }
-    // },(error=>{
-    //   this.toastr.error(error.message,'Thông báo')
-    // }))
-  }
 }
